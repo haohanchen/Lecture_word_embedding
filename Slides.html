@@ -325,14 +325,14 @@
   <p class="institute">香港大学 政治与公共行政学系</p>
 </section>
 
-<section id="今天讲什么" class="slide level2">
-<h2>今天讲什么</h2>
+<section id="计划" class="slide level2">
+<h2>计划</h2>
 <div>
 <ul>
-<li class="fragment"><p>词嵌入有什么用？ (10min)</p></li>
-<li class="fragment"><p><strong>词嵌入方法原理 (30min)</strong></p></li>
-<li class="fragment"><p><strong>词嵌入应用实例：标记《新闻联播》文字稿 (40min)</strong></p></li>
-<li class="fragment"><p>总结 (10min)</p></li>
+<li class="fragment"><p>词嵌入解决什么问题？</p></li>
+<li class="fragment"><p><strong>词嵌入方法原理</strong></p></li>
+<li class="fragment"><p><strong>词嵌入应用实例：标记《新闻联播》文字稿</strong></p></li>
+<li class="fragment"><p>总结</p></li>
 <li class="fragment"><p><em><strong>学习目标：</strong><del>两小时精通词嵌入</del></em> 明白词嵌入的基础原理和简单应用</p></li>
 </ul>
 </div>
@@ -340,18 +340,24 @@
 <section id="本课参考资料" class="slide level2">
 <h2>本课参考资料</h2>
 <ul>
-<li><p>幻灯片地址（临时）：</p></li>
-<li><p>代码地址（临时）：</p></li>
-<li><p>全部资料：<a href="https://github.com/haohanchen/Lecture_word_embedding/" class="uri">https://github.com/haohanchen/Lecture_word_embedding/</a></p></li>
+<li><p>课件地址（临时）<a href="https://haohanchen.github.io/files/Slides.html">haohanchen.github.io/files/Slides.html</a></p></li>
+<li><p>代码地址（临时）<a href="https://haohanchen.github.io/files/code.R">haohanchen.github.io/files/code.R</a></p></li>
+<li><p>全部资料：<a href="https://github.com/haohanchen/Lecture_word_embedding/" class="uri">github.com/haohanchen/Lecture_word_embedding/</a></p></li>
 </ul>
 </section>
 <section>
-<section id="词嵌入有什么用" class="title-slide slide level1 center">
-<h1>词嵌入有什么用？</h1>
+<section id="词嵌入解决什么问题" class="title-slide slide level1 center">
+<h1>词嵌入解决什么问题？</h1>
 
 </section>
-<section id="计量文本分析把文本变成数字的科学艺术工程" class="slide level2">
-<h2>计量文本分析：把文本变成数字的科学/艺术/工程</h2>
+<section id="计量文本分析科学艺术工程" class="slide level2">
+<h2>计量文本分析：科学/艺术/工程</h2>
+<p>计量文本分析不（全）是科学</p>
+<ul>
+<li><p>科学：应用机器学习方法把文本变成数字</p></li>
+<li><p>艺术：需要研究者用研究问题和直觉解读和使用这些数据</p></li>
+<li><p>工程：把机器与研究者的直觉相结合</p></li>
+</ul>
 </section>
 <section id="传统方法-i-手工标注全部文档" class="slide level2">
 <h2>传统方法 I: 手工标注全部文档</h2>
@@ -373,7 +379,7 @@
 <ul>
 <li><p>相对费眼睛/费钱</p></li>
 <li><p>复杂模型可能难以解释</p></li>
-<li><p>难以复现或延展传统方法 III: 词典法</p></li>
+<li><p>难以复现或延展</p></li>
 </ul></li>
 </ul>
 </section>
@@ -610,7 +616,7 @@
 <ul>
 <li><p>有一个感兴趣的"概念" （例："有关经济的新闻"、"有关疫情的报道"）</p></li>
 <li><p>想从大量文档中找到与此"概念"最相关的一批文档（有可能只占一小部分）</p></li>
-<li><p>没办法对每篇文档都进行人工标注</p></li>
+<li><p>不想对文档都进行人工标注</p></li>
 <li><p>对这个概念包含哪些关键词有一些初步的想法（可能有一个小词典）</p></li>
 <li><p>但不确定这个词典会不会有遗漏</p></li>
 </ul>
@@ -677,7 +683,7 @@ w_{今天 上海 迎来 高温 天气} = w_{今天} + w_{上海} + w_{迎来} + 
 <section id="下面为r编程展示" class="slide level2">
 <h2>下面为R编程展示</h2>
 <ul>
-<li><p>可下载本教程的Github文件夹复现、拓展</p></li>
+<li><p>可下载本教程的Github文件夹作复现、拓展 <code>code.R</code></p></li>
 <li><p>所用数据包含在文件夹中</p></li>
 </ul>
 <!-- -->
@@ -692,20 +698,22 @@ w_{今天 上海 迎来 高温 天气} = w_{今天} + w_{上海} + w_{迎来} + 
 </section>
 <section id="应用词嵌入方法的注意事项" class="slide level2">
 <h2>应用词嵌入方法的注意事项</h2>
+<div>
 <ul>
-<li><p>大数据或小数据都可尝试此方法（关键不在于文档数量，而在与文本总长度）</p></li>
-<li><p>原则上，数据量越大，词嵌入效果越好（相关的词越容易被被找到）</p></li>
-<li><p>若词嵌入后效果不理想，可调整参数</p></li>
-<li><p>重视中间步骤的人工筛选</p></li>
-<li><p>可以此方法做"初筛"，再与"人工标注部分文档"方法相结合</p></li>
+<li class="fragment"><p>大数据或小数据都可尝试此方法（关键不在于文档数量，而在与文本总长度）</p></li>
+<li class="fragment"><p>原则上，数据量越大，词嵌入效果越好（相关的词越容易被被找到）</p></li>
+<li class="fragment"><p>若词嵌入后效果不理想，可调整参数</p></li>
+<li class="fragment"><p>重视中间步骤的人工筛选</p></li>
+<li class="fragment"><p>可以此方法做"初筛"，再与"人工标注部分文档"方法相结合</p></li>
 </ul>
+</div>
 </section>
 <section id="延伸阅读" class="slide level2">
 <h2>延伸阅读</h2>
 <ul>
 <li><p>拙作（今日所讲内容的延伸）</p>
 <ul>
-<li><p>方法论工作论文：<a href="https://haohanchen.github.io/files/ChenHaohan_word_embedding.pdf">Chen</a></p></li>
+<li><p>方法论工作论文：<a href="https://haohanchen.github.io/files/ChenHaohan_word_embedding.pdf">Chen (2020)</a></p></li>
 <li><p>应用于非营利组织研究：<a href="https://link.springer.com/article/10.1007/s11266-021-00399-7">Chen &amp; Zhang (2021)</a></p></li>
 </ul></li>
 <li><p>词嵌入的技术文献</p>
@@ -718,7 +726,7 @@ w_{今天 上海 迎来 高温 天气} = w_{今天} + w_{上海} + w_{迎来} + 
 <ul>
 <li><a href="https://www.journals.uchicago.edu/doi/10.1086/715162">Rodriguez &amp; Spirling</a></li>
 </ul></li>
-<li><p>社会学应用</p>
+<li><p>社会学应用论文</p>
 <ul>
 <li><a href="https://journals.sagepub.com/doi/full/10.1177/0003122419877135">Kozlowski et al (2019)</a></li>
 </ul></li>

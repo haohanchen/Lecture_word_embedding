@@ -11,31 +11,39 @@ editor: visual
 # https://quarto.org/docs/presentations/revealjs/themes.html
 ---
 
-## 今天讲什么
+## 计划
 
 ::: incremental
--   词嵌入有什么用？ (10min)
+-   词嵌入解决什么问题？
 
--   **词嵌入方法原理 (30min)**
+-   **词嵌入方法原理**
 
--   **词嵌入应用实例：标记《新闻联播》文字稿 (40min)**
+-   **词嵌入应用实例：标记《新闻联播》文字稿**
 
--   总结 (10min)
+-   总结
 
 -   ***学习目标：**~~两小时精通词嵌入~~* 明白词嵌入的基础原理和简单应用
 :::
 
 ## 本课参考资料
 
--   幻灯片地址（临时）：
+-   课件地址（临时）[haohanchen.github.io/files/Slides.html](https://haohanchen.github.io/files/Slides.html)
 
--   代码地址（临时）：
+-   代码地址（临时）[haohanchen.github.io/files/code.R](https://haohanchen.github.io/files/code.R)
 
--   全部资料：<https://github.com/haohanchen/Lecture_word_embedding/>
+-   全部资料：[github.com/haohanchen/Lecture_word_embedding/](https://github.com/haohanchen/Lecture_word_embedding/){.uri}
 
-# 词嵌入有什么用？
+# 词嵌入解决什么问题？
 
-## 计量文本分析：把文本变成数字的科学/艺术/工程
+## 计量文本分析：科学/艺术/工程
+
+计量文本分析不（全）是科学
+
+-   科学：应用机器学习方法把文本变成数字
+
+-   艺术：需要研究者用研究问题和直觉解读和使用这些数据
+
+-   工程：把机器与研究者的直觉相结合
 
 ## 传统方法 I: 手工标注全部文档
 
@@ -59,7 +67,7 @@ editor: visual
 
     -   复杂模型可能难以解释
 
-    -   难以复现或延展传统方法 III: 词典法
+    -   难以复现或延展
 
 ## 传统方法 III：词典法
 
@@ -322,7 +330,7 @@ $$
 
 -   想从大量文档中找到与此\"概念\"最相关的一批文档（有可能只占一小部分）
 
--   没办法对每篇文档都进行人工标注
+-   不想对文档都进行人工标注
 
 -   对这个概念包含哪些关键词有一些初步的想法（可能有一个小词典）
 
@@ -395,7 +403,7 @@ $$
 
 ## 下面为R编程展示
 
--   可下载本教程的Github文件夹复现、拓展
+-   可下载本教程的Github文件夹作复现、拓展 `code.R`
 
 -   所用数据包含在文件夹中
 
@@ -408,6 +416,7 @@ $$
 
 ## 应用词嵌入方法的注意事项
 
+::: incremental
 -   大数据或小数据都可尝试此方法（关键不在于文档数量，而在与文本总长度）
 
 -   原则上，数据量越大，词嵌入效果越好（相关的词越容易被被找到）
@@ -417,12 +426,13 @@ $$
 -   重视中间步骤的人工筛选
 
 -   可以此方法做\"初筛\"，再与\"人工标注部分文档\"方法相结合
+:::
 
 ## 延伸阅读
 
 -   拙作（今日所讲内容的延伸）
 
-    -   方法论工作论文：[Chen](https://haohanchen.github.io/files/ChenHaohan_word_embedding.pdf)
+    -   方法论工作论文：[Chen (2020)](https://haohanchen.github.io/files/ChenHaohan_word_embedding.pdf)
 
     -   应用于非营利组织研究：[Chen & Zhang (2021)](https://link.springer.com/article/10.1007/s11266-021-00399-7)
 
@@ -438,7 +448,7 @@ $$
 
     -   [Rodriguez & Spirling](https://www.journals.uchicago.edu/doi/10.1086/715162)
 
--   社会学应用
+-   社会学应用论文
 
     -   [Kozlowski et al (2019)](https://journals.sagepub.com/doi/full/10.1177/0003122419877135)
 
