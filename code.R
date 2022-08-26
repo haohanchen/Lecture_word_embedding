@@ -97,6 +97,8 @@ segment("新冠肺炎", tokenizer) # 随机检查：现在分词器认识“新�
 ## 用“加强版”分词器重做一遍分词 ----
 d$text_tok <- lapply(d$text, function(x) segment(x, tokenizer))
 
+d$text_tok[1]
+
 # Some simple diagnostics 看看分词后每篇文档大概多少个词
 hist(sapply(d$text_tok, length), 
      xlab = "词数", ylab = "频率",
@@ -123,7 +125,10 @@ tcm <- create_tcm(it, vectorizer, skip_grams_window = 10)
 ## 训练模型 ----
 
 model_glove = GlobalVectors$new(rank = 50, x_max = 10)
+# rank = 50 50维向量
 wv_main <- model_glove$fit_transform(tcm, n_iter = 10, convergence_tol = 0.01, n_threads = 8)
+# 训练模型。长过程
+# n_iter = 10 
 dim(wv_main)
 wv_context <- model_glove$components
 dim(wv_context)
@@ -172,6 +177,7 @@ get_top_similar_words("扶贫", 20)
 get_top_similar_words("发展", 20)
 get_top_similar_words(c("美国", "俄罗斯"), 20)
 
+get_top_similar_words("美好", 20)
 
 # 运用词向量来扩大词典 ----
 
@@ -197,13 +203,14 @@ rm(dictionary_expand)
 out_query_vocab <- read.xlsx("data/output/dictionary_expand_label.xlsx") %>%
   filter(Select == 1)
 
-# 构造“概念”向量：求词典的词向量平均值 ----
+# 构造“概念”向量：求词典的词向量平均值/总和 ----
 out_query_vector <- get_wv_average(out_query_vocab$term_similar)
 
 
 # 构造文档向量 ----
 
-document_vectors <- t(sapply(d$text_tok, function(x) get_wv_average(x)))
+document_vectors <- 
+  t(sapply(d$text_tok, function(x) get_wv_average(x)))
 ## 此行代码较花时间
 ## 此处我用了最简单的count方法。可尝试TF-IDF权重算平均值，减少常见词/停用词的影响。
 
